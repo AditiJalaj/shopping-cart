@@ -25,7 +25,7 @@ nav{
   border:2px solid black;
 }
 
-img{
+.product-image{
   width: 22vw;
   height: 30vh;
 }
@@ -36,6 +36,13 @@ img{
   width: 25%;
   height: 55vh;
   overflow:hidden;
+}
+.eachcart-item{
+  border: 1px solid black;
+  padding: 2px;
+  margin: 8px;
+  width:100%;
+  height: 30vh;
 }
 .price{
   background-color:#2874f0 ;
@@ -65,4 +72,14 @@ font-weight: bolder;
   color: black;
   font-weight: bolder;
   cursor: pointer;
+}
+.remove{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.eachcart-image{
+  width: 7vw;
+  height: 12vh;
 }

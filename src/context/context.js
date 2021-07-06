@@ -4,15 +4,14 @@ const Cart=createContext([])
 
 const Context = (props) => {
 
-    const [cart,setCart]=useState([])
-
+  const [cart,setCart]=useState([])
    const get=JSON.parse(localStorage.getItem('cart'))
   
    useEffect(()=>{
        if(get){
            setCart(get)
        }
-   },[])
+   },[setCart])
 
     return ( 
         <Cart.Provider value={[cart,setCart]}>

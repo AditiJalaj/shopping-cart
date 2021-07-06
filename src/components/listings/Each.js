@@ -1,38 +1,64 @@
-import {useRef,useContext, useEffect} from 'react'
-import {Cart } from '../../context/context'
+import { useRef, useContext, useEffect } from "react";
 
-const Each = ({ brand, title, category,id, image, price }) => {
+const Each = ({
+  brand,
+  title,
+  cartval,
+  setCartVal,
+  id,
+  image,
+  price,
+}) => {
+  const btnRef = useRef(null);
 
-    const btnRef=useRef(null)
- 
-    //value is undefined once
-     const value=useContext(Cart) //array of cart =[] and setCart fnction
-     console.log('hi ',value) //gives undefined once- fixed by default value for createContext
+  const addtoCart = (_id) => {
+    console.log("id", _id);
+    btnRef.current.style.backgroundColor = "yellow";
 
-        const cart=value[0]
-        const setCart=value[1]
-        console.log('cart',cart)   //gives undefined before giving []
+    var cartCheck = false;
 
-     
-    const addtoCart=(_id)=>{
-        console.log("id",_id)
-        btnRef.current.style.backgroundColor="blue"
-      
-        //setCart to update logic of local stroage
-       
+    //this part of gettign data is not correctly working from hooks
+
+    var alreadythere = JSON.parse(localStorage.getItem("cart"));
+    if (alreadythere === null || alreadythere === undefined) {
+      alreadythere = [];
     }
+    const items = {
+      id: _id,
+      brand: brand,
+      image: image,
+      price: price,
+      title:title
+    };
+
+    {
+      alreadythere.forEach((i) => {
+        if (i.id === _id) {
+          alert("Item already present in cart!");
+          cartCheck = true;
+        }
+      });
+    }
+
+    var merged;
+    if (cartCheck === false) {
+      merged = [...alreadythere, items];
+      setCartVal(localStorage.setItem("cart", JSON.stringify(merged)));
+    }
+  };
 
   return (
     <div className="each-item">
-      <img src={image} alt="product image" />
+      <img className="product-image" src={image} alt="product-image" />
       <div>
-        <p className='brand'>{brand}</p>
-        <span className='title'>{title}</span>
-        <span className='price'>{price}$</span>
+        <p className="brand">{brand}</p>
+        <span className="title">{title}</span>
+        <span className="price">{price}$</span>
       </div>
 
-      <button ref={btnRef}
-      onClick={()=>addtoCart(id)} className="addtocart">Add to Cart</button>
+      <button ref={btnRef} onClick={() => addtoCart(id)} className="addtocart">
+        Add to Cart
+      </button>
     </div>
   );
 };
