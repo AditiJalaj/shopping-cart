@@ -4,7 +4,7 @@ import {Cart} from '../../context/context'
 import {useContext} from 'react'
 
 
-const Listing = ({cartval,setCartVal}) => {
+const Listing = ({cartval,setCartVal,refresh,setRefresh}) => {
 
     const [data,setData]=useData()
 
@@ -24,6 +24,8 @@ const Listing = ({cartval,setCartVal}) => {
               price={i.price}
               cartval={cartval}
               setCartVal={setCartVal}
+              refresh={refresh} 
+              setRefresh={setRefresh}
               />
           })}
         </div>

@@ -16,7 +16,7 @@ function App() {
     <Router>
     <NavBar/>
     <Switch>
-    <Route path='/' exact component={() => <Listing cartval={cartval} setCartVal={setCartVal} />}/>
+    <Route path='/' exact component={() => <Listing cartval={cartval} refresh={refresh} setRefresh={setRefresh} setCartVal={setCartVal} />}/>
     <Route path='/cart' exact component={() => <CartContainer refresh={refresh} setRefresh={setRefresh} cartval={cartval} setCartVal={setCartVal} />} />
     </Switch>
     </Router>

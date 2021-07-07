@@ -8,16 +8,17 @@ const Each = ({
   id,
   image,
   price,
+  refresh,setRefresh
 }) => {
   const btnRef = useRef(null);
 
   const addtoCart = (_id) => {
-    console.log("id", _id);
+   // console.log("id", _id);
     btnRef.current.style.backgroundColor = "yellow";
 
     var cartCheck = false;
 
-    //this part of gettign data is not correctly working from hooks
+    //this part of gettign data is not correctly working from conntext api
 
     var alreadythere = JSON.parse(localStorage.getItem("cart"));
     if (alreadythere === null || alreadythere === undefined) {
@@ -45,6 +46,7 @@ const Each = ({
       merged = [...alreadythere, items];
       setCartVal(localStorage.setItem("cart", JSON.stringify(merged)));
     }
+    setRefresh(!refresh)
   };
 
   return (

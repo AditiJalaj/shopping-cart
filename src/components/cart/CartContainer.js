@@ -6,7 +6,7 @@ const CartContainer = ({cartval,setCartVal,refresh,setRefresh}) => {
 
     //console.log('from cart cont',cartval) // undefined after mount
     var items=0;
-    if(cartval!==undefined){
+    if( cartval!==null && cartval!==undefined){
         cartval.map((i)=>{
            return items=items+1;
         })
@@ -17,8 +17,8 @@ const CartContainer = ({cartval,setCartVal,refresh,setRefresh}) => {
         <div className="cart-adjacent">
         <div className='cart-container'>
         <strong>MY CART({items})</strong>
-        {cartval===undefined ? "Your cart Is empty!": null}
-        {cartval && cartval.length>0 && cartval.map((i)=>{
+        {cartval===undefined ? "Please Refresh": null}
+        {cartval!==null && cartval!==undefined && cartval.length>0 && cartval.map((i)=>{
             return (<EachCart key={i.id}
             setCartVal={setCartVal}
             cartval={cartval}
@@ -34,12 +34,14 @@ const CartContainer = ({cartval,setCartVal,refresh,setRefresh}) => {
         })}
         </div>
         
-        <PriceSummary 
+        
+        <PriceSummary
         setCartVal={setCartVal}
         cartval={cartval}
         refresh={refresh}
         setRefresh={setRefresh}
         />
+        
 
         </div>
         <Saved
