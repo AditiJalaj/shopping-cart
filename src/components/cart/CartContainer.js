@@ -1,5 +1,6 @@
 import EachCart from '../../components/cart/EachCart'
 import PriceSummary from '../PriceSummary';
+import Saved from '../cart/saved/Saved'
 
 const CartContainer = ({cartval,setCartVal,refresh,setRefresh}) => {
 
@@ -12,6 +13,7 @@ const CartContainer = ({cartval,setCartVal,refresh,setRefresh}) => {
     }
 
     return ( 
+        <>
         <div className="cart-adjacent">
         <div className='cart-container'>
         <strong>MY CART({items})</strong>
@@ -38,7 +40,15 @@ const CartContainer = ({cartval,setCartVal,refresh,setRefresh}) => {
         refresh={refresh}
         setRefresh={setRefresh}
         />
+
         </div>
+        <Saved
+        cartval={cartval}
+        refresh={refresh}
+        setRefresh={setRefresh}
+        setCartVal={setCartVal}
+        />
+        </>
         );
 }
  

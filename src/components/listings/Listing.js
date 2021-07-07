@@ -13,7 +13,6 @@ const Listing = ({cartval,setCartVal}) => {
    
     return ( 
         <>
-        listing components
         <div className="listings">
           {data.length>0 && data.map((i)=>{
               return <Each key={i.id}
