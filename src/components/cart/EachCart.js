@@ -8,18 +8,28 @@ const EachCart = ({brand,
     image,
     refresh,
     setRefresh,
-    price,}) => {
-
-
+    price}) => {
         const [quan,setQuan]=useState(1)
+        const [updatedPrice,setUpdatedPrice]=useState(price)
+
 
         const inc=(_id)=>{
             setQuan((pv)=>pv+1)
+            setUpdatedPrice((pv)=>pv+price)
+           
+            const found = cartval.find(i => i.id===_id);
+            found.price=updatedPrice;
+           //logic for setval to update price in ls
         }
 
         const dec=(_id)=>{
            if(quan>1){
             setQuan((pv)=>pv-1)
+            setUpdatedPrice((pv)=>pv-price)
+           
+            const found = cartval.find(i => i.id===_id);
+            found.price=updatedPrice;
+            //logic for setval
            } 
         }
         
@@ -42,8 +52,9 @@ const EachCart = ({brand,
          <img src={image} className="eachcart-image" alt="cart-image" />
       
         <span className="brand">{brand}</span>
-        
-        <span style={{fontWeight:"bolder",margin:"4px",padding:"2px"}}>{price}$</span>
+     
+        <span style={{fontWeight:"bolder",fontSize:"30px",margin:"8px",padding:"2px"}}>
+        {updatedPrice}$</span>
       
 
       <button  onClick={() =>remove(id)} className="remove">
@@ -55,10 +66,9 @@ const EachCart = ({brand,
       <span>{quan}</span>
       <button onClick={()=>{inc(id)}}>+</button>
       </div>
-
     </div>
-   
-        </> );
+    
+    </> );
 }
  
 export default EachCart;
