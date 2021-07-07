@@ -6,10 +6,11 @@ const EachSaved = ({ brand,
     image,
     refresh,
     setRefresh,
+    saved,
     price}) => {
 
         const moveToCart=(_id)=>{
-
+            
         }
 
         const remove=(_id)=>{
@@ -18,13 +19,13 @@ const EachSaved = ({ brand,
               );
               if (confirmation) {
                 const removed =
-                  cartval &&
-                  cartval.length > 0 &&
-                  cartval.filter((i) => {
+                  saved &&
+                  saved.length > 0 &&
+                  saved.filter((i) => {
                     return i.id !== _id;
                   });
           
-                setCartVal(localStorage.setItem("saved", JSON.stringify(removed)));
+                localStorage.setItem("saved", JSON.stringify(removed));
                 setRefresh(!refresh);
               }
         }
@@ -36,11 +37,11 @@ const EachSaved = ({ brand,
         <img src={image} className="eachcart-image" alt="cart-image" />
 
         <span className="brand">{brand}</span>
-
+        <span className="price">{price}$</span>
         <button onClick={() => remove(id)} className="remove">
           REMOVE
         </button>
-
+        
         <button
           className="remove"
           onClick={() => {

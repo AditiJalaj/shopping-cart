@@ -12,7 +12,7 @@ const PriceSummary = ({  setCartVal,
         useEffect(()=>{
             console.log('useeffect from price summ ran')
             const cart_arr=JSON.parse(localStorage.getItem('cart'))
-            cart_arr.length>0 && cart_arr!==undefined && cart_arr.map((i)=>{
+            cart_arr.length>0 || cart_arr!==null || cart_arr!==undefined && cart_arr.map((i)=>{
                 setTotalprice(pv=>pv+i.price)
                 setTotalitem((pv)=>pv+1)
             })
@@ -23,7 +23,7 @@ const PriceSummary = ({  setCartVal,
        <strong> PRICE SUMMARY </strong>
        <p style={{display:"flex",justifyContent:"space-between"}}>
        <span>Price {totalitem} items</span>
-       <span style={{fontWeight:'bolder',fontSize:"large"}}>{Math.floor(totalprice)}$</span>
+       <span >{Math.floor(totalprice)}$</span>
        </p>
 
        <p  style={{display:"flex",justifyContent:"space-between"}}>
@@ -33,7 +33,7 @@ const PriceSummary = ({  setCartVal,
        
        <p style={{display:"flex",justifyContent:"space-between",borderTop:'1px solid black',marginTop:'5px'}}>
        <strong>TOTAL AMOUNT</strong>
-       <span>{Math.floor(totalprice)}</span>
+       <span style={{fontWeight:'bolder',fontSize:"500"}}>{Math.floor(totalprice)}$</span>
        </p>
        
         </div> );

@@ -13,6 +13,7 @@ const Saved = ({refresh,setRefresh,cartval,setCartVal}) => {
        {saved && saved.map((i)=>{
            return <EachSaved
            key={i.id}
+           saved={saved}
            setCartVal={setCartVal}
            cartval={cartval}
            id={i.id}

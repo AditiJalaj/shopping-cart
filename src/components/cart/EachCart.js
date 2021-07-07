@@ -59,6 +59,7 @@ const EachCart = ({
     }
   };
 
+
   const saveHandler = (_id) => {
     var saved = JSON.parse(localStorage.getItem("saved"));
 
@@ -77,11 +78,11 @@ const EachCart = ({
     const savedarr = saved;
     if(savedarr.find((i)=>i.id===_id)){
         alert('item already saved')
+        return 
     }
     
-    else if(savedarr.find((i)=>i.id!==_id)){
-        savedarr.push(items);
-    }
+    savedarr.push(items)
+    
     localStorage.setItem("saved", JSON.stringify(savedarr));
 
     if(cartval!==undefined){
@@ -93,6 +94,7 @@ const EachCart = ({
         setRefresh(!refresh);
     }
   };
+
 
   return (
     <>
